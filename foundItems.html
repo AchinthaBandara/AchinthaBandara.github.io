@@ -1,7 +1,14 @@
-<ul>
-  <li ng-repeat="item in foundCtrl.items">
-    {{ item.name }}, {{ item.short_name }}, {{item.description}}
-    <button ng-click="foundCtrl.onRemove({index: $index});">Don't want this one!</button>
-  </li>
-</ul>
-<div ng-if="foundCtrl.isNothingFound()">Nothing found.</div>
+<div class="row">
+    <div ng-repeat="item in menu.foundItems">
+        <div class="clearfix" ng-if="$index % 2 == 0"></div>
+        <div class="col-md-6">
+            <div class="jumbotron">
+                <h2>{{item.name}}</h2>
+                <h3>{{item.short_name}}</h3>
+                <p>{{item.description}}</p>
+                <input type="button" ng-click="menu.onRemove({index: $index})" class="btn btn-lg btn-primary" value="Don't want this one!">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="alert alert-danger" role="alert" ng-show="menu.onEmpty">{{menu.onEmpty}}</div>
